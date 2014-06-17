@@ -12,7 +12,7 @@ alias ll='ls -lh'
 alias la='ls -a'
 alias lla='ls -lha'
 
-# -------------------- PATH
+# -------------------- export PATH
 oldifs="$IFS"
 IFS="
 "

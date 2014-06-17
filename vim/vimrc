@@ -18,10 +18,10 @@ NeoBundle "Lokaltog/vim-easymotion"
 NeoBundle "bling/vim-airline"
 NeoBundle "majutsushi/tagbar"
 NeoBundle "matchit.zip"
+NeoBundle "tdcdev/ycm_simple_conf"
 NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "Valloric/YouCompleteMe"
 NeoBundle "Valloric/ListToggle"
-NeoBundle "tdcdev/ycm_simple_conf"
 NeoBundle "SirVer/ultisnips"
 NeoBundle "honza/vim-snippets"
 call neobundle#end()
@@ -31,55 +31,62 @@ NeoBundleCheck
 "
 " vim-colors-solarized configuration
 "
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+let g:solarized_termcolors = 256
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 "
 " nerdtree configuration
 "
-let g:NERDTreeWinSize=30
-let g:NERDTreeMouseMode=2
+let g:NERDTreeWinSize = 30
+let g:NERDTreeMouseMode = 2
+
+"
+" nerdcommenter configuration
+"
+let g:NERDSpaceDelims = 1
+let g:NERDRemoveExtraSpaces = 1
 
 "
 " tagbar configuration
 "
-let g:tagbar_left=0
-let g:tagbar_width=30
-let g:tagbar_zoomwidth=0
+let g:tagbar_left = 0
+let g:tagbar_width = 30
+let g:tagbar_zoomwidth = 0
 
 "
 " vim-airline configuration
 "
-let g:airline_theme="badwolf"
-let g:airline_left_sep="▶"
-let g:airline_right_sep="◀"
-let g:airline_symbols={}
-let g:airline_symbols.linenr="␤"
-let g:airline_symbols.branch="⎇""
-let g:airline_symbols.paste="Þ"
-let g:airline_symbols.whitespace="Ξ"
-let g:airline#extensions#whitespace#enabled=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep="▶"
-let g:airline#extensions#tabline#left_alt_sep="|"
+let g:airline_theme = "badwolf"
+let g:airline_left_sep = "▶"
+let g:airline_right_sep = "◀"
+let g:airline_symbols = {}
+let g:airline_symbols.linenr = "␤"
+let g:airline_symbols.branch = "⎇""
+let g:airline_symbols.paste = "Þ"
+let g:airline_symbols.whitespace = "Ξ"
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = "▶"
+let g:airline#extensions#tabline#left_alt_sep = "|"
 
 "
 " YouCompleteMe configuration
 "
-let g:ycm_register_as_syntastic_checker=1
-let g:ycm_global_ycm_extra_conf="~/.vim/bundle/ycm_simple_conf/ycm_simple_conf.py"
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_filepath_completion_use_working_dir=1
-let g:ycm_key_list_select_completion=["<TAB>"]
-let g:ycm_key_list_previous_completion=["<S-TAB>"]
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_key_list_select_completion = ["<TAB>"]
+let g:ycm_key_list_previous_completion = ["<S-TAB>"]
 
 "
 " ultisnips configuration
 "
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsListSnippets="<C-l>"
+let g:UltiSnipsExpandTrigger = "<C-j>"
+let g:UltiSnipsListSnippets = "<C-l>"
+let g:UltiSnipsSnippetDirectories = [$HOME . "/workspace/snippets/snippets"]
+
 
 "
 " options
@@ -94,6 +101,8 @@ set number
 set background=dark
 set laststatus=2
 set t_Co=256
+set textwidth=79
+set completeopt=menu
 
 "
 " indentation
@@ -106,7 +115,7 @@ set softtabstop=4
 "
 " variables
 "
-let g:mapleader=" "
+let g:mapleader = " "
 
 "
 " let cursor in same position when leaving insert mode
@@ -116,13 +125,13 @@ autocmd InsertLeave * if col(".") > 1 | call cursor(0, col(".") + 1) | endif
 "
 " function to see row overflow
 "
-let s:rowoverflow=0
+let s:rowoverflow = 0
 function! ToogleRowOverflow()
-    if s:rowoverflow==1
-        let s:rowoverflow=0
+    if s:rowoverflow == 1
+        let s:rowoverflow = 0
         match ErrorMsg ""
     else
-        let s:rowoverflow=1
+        let s:rowoverflow = 1
         match ErrorMsg "\%>80v.\+"
     endif
 endfunction

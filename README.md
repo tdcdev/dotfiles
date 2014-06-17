@@ -8,10 +8,8 @@ To setup dofiles just run the following command:
 
     bash setup.sh
 
-Vim
----
-
-### Compile Vim
+Compile Vim
+-----------
 
 Ensure the following packages are installed:
 
@@ -45,7 +43,8 @@ Then run the following commands:
     make
     make install
 
-### Install plugins
+Install Vim plugins
+-------------------
 
 Plugins are managed by [NeoBundle](https://github.com/Shougo/neobundle.vim).
 To get it, run the following commands:
@@ -54,7 +53,8 @@ To get it, run the following commands:
     cd ~/.vim/bundle
     git clone https://github.com/Shougo/neobundle.vim
 
-### Compile YouCompleteMe
+Compile YouCompleteMe
+---------------------
 
 Download last version of [LLVM](http://llvm.org/releases/download.html).
 Then, after [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
@@ -66,5 +66,5 @@ have been downloaded, run the following commands:
     cmake \
         -G "Unix Makefiles" \
         -DPATH_TO_LLVM_ROOT=<llvm-path> \
-        ~/.vim/bundle/YouCompleteMe/cpp/
+        ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
     make ycm_support_libs
