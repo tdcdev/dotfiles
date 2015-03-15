@@ -4,8 +4,6 @@ root_dir="$(cd "$(dirname "$0")" && pwd)"
 
 mkdir -p "$HOME/local"
 mkdir -p "$HOME/localsrc"
-mkdir -p "$HOME/programs"
-mkdir -p "$HOME/workspace"
 
 for sub_dir in "${root_dir%%/}"/*
 do

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# -------------------- source /etc/skel/.bashrc
+if [[ -f "/etc/skel/.bashrc" ]]
+then
+    source "/etc/skel/.bashrc"
+fi
+
 # -------------------- umask
 umask 022
 

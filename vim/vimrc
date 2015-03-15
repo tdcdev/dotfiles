@@ -102,7 +102,6 @@ set number
 set background=dark
 set laststatus=2
 set t_Co=256
-set textwidth=79
 set completeopt=menu
 
 "
@@ -119,11 +118,6 @@ set softtabstop=4
 let g:mapleader = " "
 
 "
-" let cursor in same position when leaving insert mode
-"
-autocmd InsertLeave * if col(".") > 1 | call cursor(0, col(".") + 1) | endif
-
-"
 " function to see row overflow
 "
 let s:rowoverflow = 0
@@ -136,12 +130,12 @@ function! ToogleRowOverflow()
         match ErrorMsg "\%>80v.\+"
     endif
 endfunction
-call ToogleRowOverflow()
 
 "
 " key mapping
 "
 inoremap jk <ESC>
+vnoremap jk <ESC>
 nnoremap <C-Left> :bprevious<CR>
 nnoremap <C-Right> :bnext<CR>
 nnoremap <C-Down> :NERDTreeClose<CR>:bd<CR>
