@@ -1,0 +1,5 @@
+# -------------------- umask
+umask 022
+
+# -------------------- export environment variables
+export PATH=$HOME/local/llvm/bin/:$PATH

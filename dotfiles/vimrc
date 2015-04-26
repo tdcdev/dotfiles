@@ -1,0 +1,169 @@
+if has('syntax')
+    syntax on
+endif
+
+"
+" neobundle configuration
+"
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    au VimEnter * PlugInstall
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'Lokaltog/vim-easymotion'
+Plug 'SirVer/ultisnips'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'matchit.zip'
+Plug 'rhysd/vim-clang-format'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tdcdev/YouCompleteMe'
+Plug 'tdcdev/ycm_simple_conf'
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+"
+" vim-colors-solarized configuration
+"
+let g:solarized_termcolors = 256
+let g:solarized_termtrans = 1
+if !empty(glob('~/.vim/plugged/vim-colors-solarized'))
+    colorscheme solarized
+endif
+
+"
+" nerdtree configuration
+"
+let g:NERDTreeWinSize = 50
+let g:NERDTreeMouseMode = 2
+
+"
+" nerdcommenter configuration
+"
+let g:NERDSpaceDelims = 1
+let g:NERDRemoveExtraSpaces = 1
+
+"
+" tagbar configuration
+"
+let g:tagbar_left = 0
+let g:tagbar_width = 50
+let g:tagbar_zoomwidth = 0
+
+"
+" vim-airline configuration
+"
+let g:airline_theme = 'badwolf'
+let g:airline_left_sep = "▶"
+let g:airline_right_sep = "◀"
+let g:airline_symbols = {}
+let g:airline_symbols.linenr = "␤"
+let g:airline_symbols.branch = "⎇""
+let g:airline_symbols.paste = "Þ"
+let g:airline_symbols.whitespace = "Ξ"
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = "▶"
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+"
+" YouCompleteMe configuration
+"
+let g:ycm_register_as_syntastic_checker = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_key_list_select_completion = ['<TAB>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>']
+au FileType c,cpp nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
+au FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+
+"
+" clang-format configuration
+"
+let g:clang_format#style_options = {
+            \ 'AllowShortBlocksOnASingleLine' : 'false',
+            \ 'AllowShortFunctionsOnASingleLine': 'None',
+            \ 'AllowShortIfStatementsOnASingleLine': 'false',
+            \ 'AllowShortLoopsOnASingleLine': 'false',
+            \ 'AlwaysBreakTemplateDeclarations': 'true',
+            \ 'BinPackParameters' : 'false',
+            \ 'BreakBeforeBraces': 'Allman',
+            \ 'BreakConstructorInitializersBeforeComma': 'true',
+            \ 'ColumnLimit': 80,
+            \ 'DerivePointerAlignment': 'false',
+            \ 'IndentWidth': 4,
+            \ 'PenaltyBreakBeforeFirstCallParameter': 10,
+            \ 'PointerAlignment': 'Left',
+            \ 'Standard': 'C++11',
+            \ 'TabWidth': 4,
+            \ 'UseTab': 'Never'}
+au FileType c,cpp nnoremap <buffer> <leader>f :ClangFormat<cr>
+
+"
+" ultisnips configuration
+"
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsListSnippets = '<C-l>'
+let g:UltiSnipsSnippetDirectories = [$HOME . '/workspace/snippets/snippets']
+
+
+"
+" general settings
+"
+set showcmd
+set showmatch
+set ignorecase
+set incsearch
+set mouse=a
+set backspace=2
+set number
+set background=dark
+set laststatus=2
+set t_Co=256
+set autoindent
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set textwidth=120
+
+"
+" variables
+"
+let g:mapleader = ' '
+
+"
+" function to see column overflow
+"
+let s:rowoverflow = 0
+function! ToogleRowOverflow()
+    if s:rowoverflow == 1
+        let s:rowoverflow = 0
+        match ErrorMsg ''
+    else
+        let s:rowoverflow = 1
+        match ErrorMsg '\%>120.\+'
+    endif
+endfunction
+
+"
+" general key mapping
+"
+inoremap jk <ESC>
+vnoremap jk <ESC>
+vnoremap <leader>s :sort<CR>
+nnoremap <C-Left> :bprevious<CR>
+nnoremap <C-Right> :bnext<CR>
+nnoremap <C-Down> :NERDTreeClose<CR>TagbarClose<CR>:bd<CR>
+nnoremap <F8> :call ToogleRowOverflow()<CR>
+nnoremap <F9> :NERDTreeToggle<CR>
+nnoremap <F10> :TagbarToggle<CR>
