@@ -16,18 +16,21 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Lokaltog/vim-easymotion'
 Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'matchit.zip'
+Plug 'mileszs/ack.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
+Plug 'sjl/gundo.vim'
 Plug 'tdcdev/ycm_simple_conf'
 Plug 'tpope/vim-fugitive'
+Plug 'wincent/Command-T'
 
 call plug#end()
 
@@ -81,6 +84,7 @@ let g:airline#extensions#tabline#left_alt_sep = "|"
 "
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
@@ -119,6 +123,12 @@ let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsListSnippets = '<C-l>'
 let g:UltiSnipsSnippetDirectories = [$HOME . '/workspace/snippets/snippets']
 
+"
+" gundo configuration
+"
+let g:gundo_preview_bottom = 1
+let g:gundo_preview_height = 25
+
 
 "
 " general settings
@@ -139,6 +149,7 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set textwidth=80
+set completeopt=menu
 
 "
 " variables
@@ -202,6 +213,9 @@ au BufNewFile,BufRead *.tex,*.sty,*.cls :set filetype=tex
 inoremap jk <ESC>
 vnoremap jk <ESC>
 vnoremap <leader>s :sort<CR>
+nnoremap <silent> <Leader>a :Ack!
+nnoremap <silent> <Leader>o :CommandT<CR>
+nnoremap <silent> <Leader>u :GundoToggle<CR>
 nnoremap <C-Left> :bprevious<CR>
 nnoremap <C-Right> :bnext<CR>
 nnoremap <C-Down> :NERDTreeClose<CR>:TagbarClose<CR>:bd<CR>

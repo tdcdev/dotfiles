@@ -17,7 +17,9 @@ Install following requirements:
     make                \
     cmake               \
     curl                \
+    ack-grep            \
     libpython2.7-dev    \
+    ruby-dev            \
     exuberant-ctags     \
 
 Then run the following commands:
@@ -28,4 +30,5 @@ Then run the following commands:
     cd ~/workspace/dotfiles
     bash setup.sh
     bash build_llvm.sh
+    bash build_commandt.sh
     bash build_ycm.sh

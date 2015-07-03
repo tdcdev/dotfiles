@@ -1,6 +1,5 @@
 #!/bin/bash
 
-vim -c ":PlugInstall|:qa"
 cd ~/.vim/plugged/YouCompleteMe
 mkdir build
 cd build
