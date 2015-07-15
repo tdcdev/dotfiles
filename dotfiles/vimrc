@@ -20,6 +20,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'honza/vim-snippets'
+Plug 'hynek/vim-python-pep8-indent'
 Plug 'majutsushi/tagbar'
 Plug 'matchit.zip'
 Plug 'mileszs/ack.vim'
@@ -94,27 +95,8 @@ au FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
 "
 " clang-format configuration
 "
-let g:clang_format#style_options = {
-            \ 'AccessModifierOffset': -4,
-            \ 'AllowShortBlocksOnASingleLine' : 'false',
-            \ 'AllowShortFunctionsOnASingleLine': 'None',
-            \ 'AllowShortIfStatementsOnASingleLine': 'false',
-            \ 'AllowShortLoopsOnASingleLine': 'false',
-            \ 'AlwaysBreakTemplateDeclarations': 'true',
-            \ 'BinPackArguments' : 'false',
-            \ 'BinPackParameters' : 'false',
-            \ 'BreakBeforeBraces': 'Allman',
-            \ 'BreakConstructorInitializersBeforeComma': 'true',
-            \ 'ColumnLimit': 80,
-            \ 'DerivePointerAlignment': 'false',
-            \ 'IndentCaseLabels': 'false',
-            \ 'IndentWidth': 4,
-            \ 'NamespaceIndentation': 'Inner',
-            \ 'PenaltyBreakBeforeFirstCallParameter': 10,
-            \ 'PointerAlignment': 'Left',
-            \ 'Standard': 'C++11',
-            \ 'TabWidth': 4,
-            \ 'UseTab': 'Never'}
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
 
 "
 " ultisnips configuration
