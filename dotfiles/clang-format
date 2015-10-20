@@ -14,7 +14,7 @@ ColumnLimit: 80
 DerivePointerAlignment: false
 IndentCaseLabels: false
 IndentWidth: 4
-NamespaceIndentation: Inner
+NamespaceIndentation: None
 PenaltyBreakBeforeFirstCallParameter: 100
 PointerAlignment: Left
 SpacesInAngles: true

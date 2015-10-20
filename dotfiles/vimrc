@@ -20,7 +20,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'honza/vim-snippets'
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'klen/python-mode'
 Plug 'majutsushi/tagbar'
 Plug 'matchit.zip'
 Plug 'mileszs/ack.vim'
@@ -89,8 +89,15 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
-au FileType c,cpp nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
-au FileType c,cpp nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,python nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
+au FileType c,cpp,python nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+
+"
+
+"
+" pymode configuration
+"
+let g:pymode_rope_complete_on_dot = 0
 
 "
 " clang-format configuration
@@ -110,6 +117,11 @@ let g:UltiSnipsSnippetDirectories = [$HOME . '/workspace/snippets/snippets']
 "
 let g:gundo_preview_bottom = 1
 let g:gundo_preview_height = 25
+
+"
+" CommandT configuration
+"
+let g:CommandTWildIgnore=&wildignore . "3rdparty/**,build"
 
 
 "
@@ -132,6 +144,8 @@ set tabstop=4
 set softtabstop=4
 set textwidth=80
 set completeopt=menu
+set foldmethod=indent
+set foldlevel=99
 
 "
 " variables

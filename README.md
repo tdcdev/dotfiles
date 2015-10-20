@@ -14,6 +14,7 @@ Install following requirements:
     git-gui             \
     vim                 \
     vim-gtk             \
+    g++                 \
     make                \
     cmake               \
     curl                \

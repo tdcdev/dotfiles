@@ -2,8 +2,9 @@
 
 root_dir="$(cd "$(dirname "$0")" && pwd)"
 
-mkdir -p ~/local
-mkdir -p ~/localsrc
+sudo mkdir -p /opt/$USER
+sudo chown $USER:$USER /opt/$USER
+mkdir -p ~/optsrc
 
 echo "Link dotfiles:"
 
