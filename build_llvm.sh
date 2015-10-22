@@ -3,9 +3,9 @@
 cd ~/optsrc
 svn co http://llvm.org/svn/llvm-project/llvm/branches/release_37 llvm
 cd llvm/tools
-svn co http://llvm.org/svn/llvm-project/cfe/trunk clang
+svn co http://llvm.org/svn/llvm-project/cfe/branches/release_37 clang
 cd clang/tools
-svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra
+svn co http://llvm.org/svn/llvm-project/clang-tools-extra/branches/release_37 extra
 cd ~/optsrc/llvm
 mkdir build
 cd build
