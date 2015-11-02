@@ -20,6 +20,7 @@ Install following requirements:
     curl                \
     ack-grep            \
     libpython2.7-dev    \
+    python-setuptools   \
     ruby-dev            \
     exuberant-ctags     \
 
